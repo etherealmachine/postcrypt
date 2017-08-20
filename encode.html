@@ -13,7 +13,6 @@
 				var rp = {};
 				var ciphertext = sjcl.encrypt(password, plaintext, p, rp);
 				var base64text = btoa(ciphertext);
-				console.log(base64text);
 				return base64text.replace(/(.{80})/g, '$1\n');
 			}
 			window.onload = function() {
