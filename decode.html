@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="sjcl.js"></script>
+		<script>
+			function decrypt(base64text, password) {
+				return sjcl.decrypt(password, atob(base64text.replace(/\n/g, '')), {}, {})
+			}
+			var plaintext;
+			window.onload = function() {
+				var decode = document.getElementById('decode');
+				var password = document.getElementById('password');
+				var encodedMessage = document.getElementById('encodedMessage');
+				var message = document.getElementById('message');
+				decode.onclick = function() {
+					plaintext = decrypt(encodedMessage.value, password.value);
+					message.innerHTML = plaintext
+						.replace(/\n/g, '<br>')
+						.replace(/ {2}/g, '&nbsp&nbsp');
+				};
+			};
+		</script>
+		<style>
+			div {
+				margin: 10px 0 10px 0;
+			}
+			textarea {
+				font-family: monospace;
+				width: 50em;
+			}
+			input {
+				width: 20em;
+			}
+			p {
+				font-family: monospace;
+				min-height: 20em;
+				border: 1px solid #ccc;
+				border-radius: 7px;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div style="display: flex; flex-direction: column;">
+			<label
+				for="encodedMessage">
+				Copy/paste the encoded message from your email:
+			</label>
+			<textarea
+				rows="20"
+				id="encodedMessage"></textarea>
+		</div>
+
+		<div style="display: flex; flex-direction: column">
+			<label
+				for="password">
+				Enter the password from your postcard:
+			</label>
+			<input
+				id="password"
+				placeholder="Password"
+				type="text">
+		</div>
+
+		<div>
+			<button
+				id="decode"
+				type="button">
+				Decode Message
+			</button>
+		</div>
+
+		<p id="message">
+		</p>
+
+	</body>
+</html>

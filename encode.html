@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="sjcl.js"></script>
+		<script>
+			function encrypt(plaintext, password) {
+				var p = {
+					mode: 'ccm',
+					ts: 64,
+					ks: 128,
+					iv: sjcl.random.randomWords(4, 0),
+				};
+				var rp = {};
+				var ciphertext = sjcl.encrypt(password, plaintext, p, rp);
+				var base64text = btoa(ciphertext);
+				console.log(base64text);
+				return base64text.replace(/(.{80})/g, '$1\n');
+			}
+			window.onload = function() {
+				var encode = document.getElementById('encode');
+				var message = document.getElementById('message');
+				var password = document.getElementById('password');
+				var encodedMessage = document.getElementById('encodedMessage');
+				encode.onclick = function() {
+					encodedMessage.textContent = encrypt(message.value, password.value);
+				};
+			};
+		</script>
+		<style>
+			div {
+				margin: 10px 0 10px 0;
+			}
+			textarea {
+				font-family: monospace;
+			}
+			input {
+				width: 20em;
+			}
+			p {
+				font-family: monospace;
+				min-height: 20em;
+				width: 50em;
+				border: 1px solid #ccc;
+				border-radius: 7px;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div style="display: flex; flex-direction: column">
+			<label for="message">Write out your message:</label>
+			<textarea
+				rows="20"
+				id="message"></textarea>
+		</div>
+
+		<div style="display: flex; flex-direction: column">
+			<label for="password">Choose a password for your postcard:</label>
+			<input
+				id="password"
+				placeholder="Password"
+				type="text">
+		</div>
+
+		<div>
+			<button
+				id="encode"
+				type="button">
+				Encode Message
+			</button>
+		<div>
+
+		<p
+			id="encodedMessage">
+		</p>
+
+	</body>
+</html>
