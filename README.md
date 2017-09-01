@@ -9,7 +9,8 @@ Encrypt the postcard text with a simple password. Send the encrypted text via em
 ### Send an encrypted postcard
 * Go to https://etherealmachine.github.io/postcrypt/encode.html
 * Pick a password
-  * I suggest something composed of 3-5 words based on the location your sending the postcard from
+  * I suggest something composed of 3-5 words, based on the where you're sending the postcard from
+  * Like, "queentowerbridge"
 * Draft your email
 * Hit the button and encode your text!
 * Copy/paste the encoded text into an email
