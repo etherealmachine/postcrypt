@@ -23,7 +23,8 @@ Encrypt the postcard text with a simple password. Send the encrypted text via em
 * Enter the password from your postcard
 * Hit the button and decode your text!
 
-### [Chrome Extension](https://chrome.google.com/webstore/detail/postcrypt/kompooepgjkibjlpjmncnojbjbnencmf) no available!
+### [Chrome Extension](https://chrome.google.com/webstore/detail/postcrypt/kompooepgjkibjlpjmncnojbjbnencmf) now available!
 * Install the extension and decrypt text without leaving your current tab!
+* Encrypt in-extension coming soon!
 
 ![Chrome Extension Demo](https://github.com/etherealmachine/postcrypt/blob/master/demo.gif?raw=true)
